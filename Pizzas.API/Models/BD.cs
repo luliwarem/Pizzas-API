@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class BD
 {
 
-    private static string _connectionString = @"Server=A-PHZ2-CIDI-021;DataBase=DAI-Pizzas;Trusted_Connection=True";
+    private static string _connectionString = @"Server=A-PHZ2-CIDI-009;DataBase=DAI-Pizzas;Trusted_Connection=True";
 
     public static List<Pizza> GetAll()
     {
@@ -28,24 +28,30 @@ public class BD
     }
 
     public static void Create(Pizza pizza){
-        string sql = "INSERT INTO Pizzas VALUES (@pNombre, @pLibreGluten, @pImporte, @pDescricion)";
+        string sql = "INSERT INTO Pizzas (Nombre, LibreGluten, Importe, Descripcion) VALUES (@pNombre, @pLibreGluten, @pImporte, @pDescripcion)";
         using(SqlConnection db = new SqlConnection(_connectionString)){
             db.Execute(sql, new {pNombre = pizza.Nombre, pLibreGluten = pizza.LibreGluten, pImporte = pizza.Importe, pDescripcion = pizza.Descripcion});
         }
     }
 
-    public static void Update(int id, Pizza pizza){
-        string sql = "UPDATE Pizzas SET Nombre = @pNombre, LibreGluten = @pLibreGluten, Importe = @pImporte, Descripcion = @pDescripcion WHERE id = @pId";
+    public static int Update(int IdPizza, Pizza pizza){
+        int intRowsAfected = 0;
+
+        string sql = "UPDATE Pizzas SET Nombre = @pNombre, LibreGluten = @pLibreGluten, Importe = @pImporte, Descripcion = @pDescripcion WHERE Id = @pIdPizza";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            db.Execute(sql, new {pNombre = pizza.Nombre, pLibreGluten = pizza.LibreGluten, pImporte = pizza.Importe, pDescripcion = pizza.Descripcion});
+            intRowsAfected = db.Execute(sql, new {pNombre = pizza.Nombre, pLibreGluten = pizza.LibreGluten, pImporte = pizza.Importe, pDescripcion = pizza.Descripcion, pIdPizza = pizza.Id});
         }
+        return intRowsAfected;
+
     }
 
-    public static void DeleteById(int Id){
+    public static int DeleteById(int Id){
+        int intRowsAfected = 0;
         string sql = "DELETE FROM Pizzas WHERE Id = @pId";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            db.Execute(sql, new { pId = Id });
+            intRowsAfected = db.Execute(sql, new { pId = Id });
         }
+        return intRowsAfected;
     }
 
 }

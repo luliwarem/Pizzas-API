@@ -16,7 +16,13 @@ public class PizzasController : ControllerBase
 
     [HttpGet("{id}")]
     public IActionResult GetById(int id){
-        return Ok(BD.GetById(id));
+        Pizza respuesta = BD.GetById(id);
+        if(respuesta == null){
+            return NotFound();
+        }
+        else{
+            return Ok(respuesta);
+        }
     }
 
     [HttpPost]
@@ -27,14 +33,24 @@ public class PizzasController : ControllerBase
     
     [HttpPut("{id}")]
     public IActionResult Update(int id, Pizza pizza){
-        BD.Update(id,pizza);
-        return Ok();
-    }
+        int rows = BD.Update(id,pizza);
+
+        if (rows == 0)
+        {
+            return NotFound();
+        }
+        return Ok();    }
 
     [HttpDelete("{id}")]
     public IActionResult DeleteById(int id){
-        BD.DeleteById(id);
+        int rows = BD.DeleteById(id);
+
+        if (rows == 0)
+        {
+            return NotFound();
+        }
         return Ok();
+
     }
     
 

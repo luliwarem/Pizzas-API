@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mieg6HFBB05iyS+Mt8asR4R0Xe28Z/iJGsPwnYBU35/BQcKlzsW8zRAO/HS8BXhwscxZmBNvVKbG3TFtGVUCpg==",
+  "dgSpecHash": "fi4rq0JjiVgHcoPfwxF1u8fPo01UNihuH06FXKeO3CY38y5UGx+Z2IrQZEVwis9kKU3xPIK7OV5/3KMs3PC/sQ==",
   "success": true,
-  "projectFilePath": "Z:\\2023\\dai\\TP01_Schnaiderman_Szmedra_Waremkraut\\Pizzas.API\\Pizzas.API.csproj",
+  "projectFilePath": "C:\\Users\\46872438\\Pizzas-API\\Pizzas.API\\Pizzas.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\46872438\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\46872438\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
